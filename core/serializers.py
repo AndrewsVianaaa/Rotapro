@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Motorista, Fabrica, Rota, Veiculo, RotaVeiculo
+from .models import Motorista, Fabrica
 
 # Serializer para o modelo Motorista
 class MotoristaSerializer(serializers.ModelSerializer):
@@ -14,19 +14,19 @@ class FabricaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 # Serializer para o modelo Rota
-class RotaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rota
-        fields = '__all__'
-
-# Serializer para o modelo Veiculo
-class VeiculoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Veiculo
-        fields = '__all__'
-
-# Serializer para o modelo RotaVeiculo
-class RotaVeiculoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RotaVeiculo
-        fields = '__all__'
+# class RotaSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Rota
+#         fields = '__all__'
+#
+# # Serializer para o modelo Veiculo
+# class VeiculoSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Veiculo
+#         fields = '__all__'
+#
+# # Serializer para o modelo RotaVeiculo
+# class RotaVeiculoSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = RotaVeiculo
+#         fields = '__all__'

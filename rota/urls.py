@@ -24,9 +24,9 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r'fabrica', viewsets.FabricaViewSet)
 router.register(r'motorista', viewsets.MotoristaViewSet)
-router.register(r'rotaveiculos', viewsets.RotaVeiculoViewSet)
-router.register(r'rota', viewsets.RotaViewSet)
-router.register(r'veiculo', viewsets.VeiculoViewSet)
+# router.register(r'rotaveiculos', viewsets.RotaVeiculoViewSet)
+# router.register(r'rota', viewsets.RotaViewSet)
+# router.register(r'veiculo', viewsets.VeiculoViewSet)
 
 urlpatterns = [
     path('', lambda request: redirect('api/', permanent=False)),

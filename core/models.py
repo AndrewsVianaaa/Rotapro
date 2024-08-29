@@ -108,23 +108,49 @@ class Fabrica(models.Model):
         verbose_name='Nome da Fábrica'
     )
     
-    endereco_fabrica = models.CharField(
-        db_column='Endereço_Fabrica',
+    turno_fabrica = models.CharField(
+        db_column='Turno_Fabrica',
         max_length=255,
-        verbose_name='Endereço Completo da Fábrica'
+        verbose_name='Selecione um Turno Comercial'
     )
     
-    telefone_fabrica = models.CharField(
-        db_column='Telefone_Fabrica',
+    placa_veiculo = models.CharField(
+        db_column='Placa_Veiculo',
         max_length=15,
-        verbose_name='Número de Telefone da Fábrica'
+        verbose_name='Placa do Veículo'
     )
-    
-    email_fabrica = models.EmailField(
-        db_column='Email_Fabrica',
-        max_length=255,
-        verbose_name='Endereço de Email da Fábrica'
+    numero_rota = models.CharField(
+        db_column='Numero_Rota',
+        max_length=15,
+        verbose_name='Número da Rota'
     )
+    quantidade_funcionarios = models.CharField(
+        db_column='quantidade_funcionarios',
+        max_length=15,
+        verbose_name='Quantidade de Funcionários'
+    )
+    data = models.CharField(
+        db_column='Data',
+        max_length=15,
+        verbose_name='Data'
+    )
+    hora_inicio = models.CharField(
+        db_column='Hora_Inicio',
+        max_length=15,
+        verbose_name='Hora de Início'
+    )
+
+    hora_fim = models.CharField(
+        db_column='Hora_Fim',
+        max_length=15,
+        verbose_name='Data do Término'
+    )
+    rotas_frequentes = models.CharField(
+        db_column='Rotas_Frequentes',
+        max_length=1000,
+        verbose_name='Rotas Frequentes'
+    )
+
     
     class Meta:
         db_table = 'fabrica'
@@ -136,132 +162,132 @@ class Fabrica(models.Model):
         return self.nome_fabrica
 
 
-# Modelo Rota
-class Rota(models.Model):
-    id = models.AutoField(
-        db_column='ID_Rota',
-        primary_key=True,
-        verbose_name='ID da Rota'
-    )
-    
-    data_rota = models.DateField(
-        db_column='Data_Rota',
-        verbose_name='Data da Rota'
-    )
-    
-    hora_saida = models.TimeField(
-        db_column='Hora_Saida',
-        verbose_name='Horário de Saída'
-    )
-    
-    hora_chegada = models.TimeField(
-        db_column='Hora_Chegada',
-        verbose_name='Horário de Chegada'
-    )
-    
-    motorista = models.ForeignKey(
-        Motorista,
-        on_delete=models.PROTECT,
-        db_column='ID_Motorista',
-        verbose_name='Motorista'
-    )
-    
-    fabrica = models.ForeignKey(
-        Fabrica,
-        on_delete=models.PROTECT,
-        db_column='ID_Fabrica',
-        verbose_name='Fábrica'
-    )
-    
-    quantidade_funcionarios = models.IntegerField(
-        db_column='Quantidade_Funcionarios',
-        verbose_name='Quantidade de Funcionários'
-    )
-    
-    turno = models.CharField(
-        db_column='Turno',
-        max_length=50,
-        verbose_name='Turno'
-    )
-    
-    class Meta:
-        db_table = 'rota'
-        ordering = ['data_rota', 'hora_saida']
-        verbose_name = 'Rota'
-        verbose_name_plural = 'Rotas'
-        
-    def __str__(self):
-        return f"Rota {self.id} - {self.motorista.nome} - {self.fabrica.nome_fabrica}"
-
-
-# Modelo Veiculo
-class Veiculo(models.Model):
-    id = models.AutoField(
-        db_column='ID_Veiculo',
-        primary_key=True,
-        verbose_name='ID do Veículo'
-    )
-    
-    placa = models.CharField(
-        db_column='Placa',
-        max_length=10,
-        verbose_name='Placa do Veículo'
-    )
-    
-    modelo = models.CharField(
-        db_column='Modelo',
-        max_length=100,
-        verbose_name='Modelo do Veículo'
-    )
-    
-    marca = models.CharField(
-        db_column='Marca',
-        max_length=100,
-        verbose_name='Marca do Veículo'
-    )
-    
-    ano_fabricacao = models.IntegerField(
-        db_column='Ano_Fabricacao',
-        verbose_name='Ano de Fabricação'
-    )
-    
-    class Meta:
-        db_table = 'veiculo'
-        ordering = ['marca', 'modelo']
-        verbose_name = 'Veículo'
-        verbose_name_plural = 'Veículos'
-        
-    def __str__(self):
-        return f"{self.marca} {self.modelo} - {self.placa}"
-
-
-# Modelo RotaVeiculo
-class RotaVeiculo(models.Model):
-    id = models.AutoField(
-        db_column='ID_Rota_Veiculo',
-        primary_key=True,
-        verbose_name='ID da Relação Rota-Veículo'
-    )
-    
-    rota = models.ForeignKey(
-        Rota,
-        on_delete=models.PROTECT,
-        db_column='ID_Rota',
-        verbose_name='Rota'
-    )
-    
-    veiculo = models.ForeignKey(
-        Veiculo,
-        on_delete=models.PROTECT,
-        db_column='ID_Veiculo',
-        verbose_name='Veículo'
-    )
-    
-    class Meta:
-        db_table = 'rota_veiculo'
-        ordering = ['rota', 'veiculo']
-        verbose_name = 'Rota Veículo'
-        verbose_name_plural = 'Rotas Veículos'
-        
-    def __str__(self):
-        return f"Rota {self.rota.id} - Veículo {self.veiculo.placa}"
+# # Modelo Rota
+# class Rota(models.Model):
+#     id = models.AutoField(
+#         db_column='ID_Rota',
+#         primary_key=True,
+#         verbose_name='ID da Rota'
+#     )
+#
+#     data_rota = models.DateField(
+#         db_column='Data_Rota',
+#         verbose_name='Data da Rota'
+#     )
+#
+#     hora_saida = models.TimeField(
+#         db_column='Hora_Saida',
+#         verbose_name='Horário de Saída'
+#     )
+#
+#     hora_chegada = models.TimeField(
+#         db_column='Hora_Chegada',
+#         verbose_name='Horário de Chegada'
+#     )
+#
+#     motorista = models.ForeignKey(
+#         Motorista,
+#         on_delete=models.PROTECT,
+#         db_column='ID_Motorista',
+#         verbose_name='Motorista'
+#     )
+#
+#     fabrica = models.ForeignKey(
+#         Fabrica,
+#         on_delete=models.PROTECT,
+#         db_column='ID_Fabrica',
+#         verbose_name='Fábrica'
+#     )
+#
+#     quantidade_funcionarios = models.IntegerField(
+#         db_column='Quantidade_Funcionarios',
+#         verbose_name='Quantidade de Funcionários'
+#     )
+#
+#     turno = models.CharField(
+#         db_column='Turno',
+#         max_length=50,
+#         verbose_name='Turno'
+#     )
+#
+#     class Meta:
+#         db_table = 'rota'
+#         ordering = ['data_rota', 'hora_saida']
+#         verbose_name = 'Rota'
+#         verbose_name_plural = 'Rotas'
+#
+#     def __str__(self):
+#         return f"Rota {self.id} - {self.motorista.nome} - {self.fabrica.nome_fabrica}"
+#
+#
+# # Modelo Veiculo
+# class Veiculo(models.Model):
+#     id = models.AutoField(
+#         db_column='ID_Veiculo',
+#         primary_key=True,
+#         verbose_name='ID do Veículo'
+#     )
+#
+#     placa = models.CharField(
+#         db_column='Placa',
+#         max_length=10,
+#         verbose_name='Placa do Veículo'
+#     )
+#
+#     modelo = models.CharField(
+#         db_column='Modelo',
+#         max_length=100,
+#         verbose_name='Modelo do Veículo'
+#     )
+#
+#     marca = models.CharField(
+#         db_column='Marca',
+#         max_length=100,
+#         verbose_name='Marca do Veículo'
+#     )
+#
+#     ano_fabricacao = models.IntegerField(
+#         db_column='Ano_Fabricacao',
+#         verbose_name='Ano de Fabricação'
+#     )
+#
+#     class Meta:
+#         db_table = 'veiculo'
+#         ordering = ['marca', 'modelo']
+#         verbose_name = 'Veículo'
+#         verbose_name_plural = 'Veículos'
+#
+#     def __str__(self):
+#         return f"{self.marca} {self.modelo} - {self.placa}"
+#
+#
+# # Modelo RotaVeiculo
+# class RotaVeiculo(models.Model):
+#     id = models.AutoField(
+#         db_column='ID_Rota_Veiculo',
+#         primary_key=True,
+#         verbose_name='ID da Relação Rota-Veículo'
+#     )
+#
+#     rota = models.ForeignKey(
+#         Rota,
+#         on_delete=models.PROTECT,
+#         db_column='ID_Rota',
+#         verbose_name='Rota'
+#     )
+#
+#     veiculo = models.ForeignKey(
+#         Veiculo,
+#         on_delete=models.PROTECT,
+#         db_column='ID_Veiculo',
+#         verbose_name='Veículo'
+#     )
+#
+#     class Meta:
+#         db_table = 'rota_veiculo'
+#         ordering = ['rota', 'veiculo']
+#         verbose_name = 'Rota Veículo'
+#         verbose_name_plural = 'Rotas Veículos'
+#
+#     def __str__(self):
+#         return f"Rota {self.rota.id} - Veículo {self.veiculo.placa}"

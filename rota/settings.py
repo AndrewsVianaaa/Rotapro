@@ -85,7 +85,7 @@ DATABASES = {
         'PORT': 5432,
         'NAME': 'rotapro',
         'USER': 'postgres',
-        'PASSWORD': '123',
+        'PASSWORD': '1234',
     }
 }
 
@@ -128,6 +128,7 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 AUTH_USER_MODEL = 'core.User'

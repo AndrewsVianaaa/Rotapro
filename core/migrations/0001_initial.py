@@ -19,9 +19,15 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(db_column='ID_Fabrica', primary_key=True, serialize=False, verbose_name='ID da Fábrica')),
                 ('nome_fabrica', models.CharField(db_column='Nome_Fabrica', max_length=255, verbose_name='Nome da Fábrica')),
-                ('endereco_fabrica', models.CharField(db_column='Endereço_Fabrica', max_length=255, verbose_name='Endereço Completo da Fábrica')),
-                ('telefone_fabrica', models.CharField(db_column='Telefone_Fabrica', max_length=15, verbose_name='Número de Telefone da Fábrica')),
-                ('email_fabrica', models.EmailField(db_column='Email_Fabrica', max_length=255, verbose_name='Endereço de Email da Fábrica')),
+                ('turno_fabrica', models.CharField(db_column='Turno_Fabrica', max_length=255, verbose_name='Selecione um Turno Comercial')),
+                ('placa_veiculo', models.CharField(db_column='Placa_Veiculo', max_length=255, verbose_name='Placa do Veículo')),
+                ('numero_rota', models.CharField(db_column='Numero_Rota', max_length=255, verbose_name='Número da Rota')),
+                ('quantidade_funcionarios', models.CharField(db_column='quantidade_funcionarios', max_length=255, verbose_name='Quantidade de Funcionários')),
+                ('data', models.CharField(db_column='Data', max_length=255, verbose_name='Data')),
+                ('hora_inicio', models.CharField(db_column='Hora_Inicio', max_length=255, verbose_name='Hora de Início')),
+                ('hora_fim', models.CharField(db_column='Hora_Fim', max_length=15, verbose_name='Data do Término')),
+                ('rotas_frequentes', models.EmailField(db_column='Rotas Frequentes', max_length=1000, verbose_name='Rotas Frequentes')),
+
             ],
             options={
                 'verbose_name': 'Fábrica',

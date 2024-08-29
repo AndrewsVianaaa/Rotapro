@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .serializers import MotoristaSerializer, FabricaSerializer, RotaSerializer, VeiculoSerializer, RotaVeiculoSerializer
-from .models import Motorista, Fabrica, Rota, Veiculo, RotaVeiculo
+from .serializers import MotoristaSerializer, FabricaSerializer
+from .models import Motorista, Fabrica
 
 class MotoristaViewSet(viewsets.ModelViewSet):
     queryset = Motorista.objects.all()
@@ -14,20 +14,20 @@ class FabricaViewSet(viewsets.ModelViewSet):
     ordering_fields = '__all__'
     ordering = '-id'
 
-class RotaViewSet(viewsets.ModelViewSet):
-    queryset = Rota.objects.all()
-    serializer_class = RotaSerializer
-    ordering_fields = '__all__'
-    ordering = '-id'
-
-class VeiculoViewSet(viewsets.ModelViewSet):
-    queryset = Veiculo.objects.all()
-    serializer_class = VeiculoSerializer
-    ordering_fields = '__all__'
-    ordering = '-id'
-
-class RotaVeiculoViewSet(viewsets.ModelViewSet):
-    queryset = RotaVeiculo.objects.all()
-    serializer_class = RotaVeiculoSerializer
-    ordering_fields = '__all__'
-    ordering = '-id'
+# class RotaViewSet(viewsets.ModelViewSet):
+#     queryset = Rota.objects.all()
+#     serializer_class = RotaSerializer
+#     ordering_fields = '__all__'
+#     ordering = '-id'
+#
+# class VeiculoViewSet(viewsets.ModelViewSet):
+#     queryset = Veiculo.objects.all()
+#     serializer_class = VeiculoSerializer
+#     ordering_fields = '__all__'
+#     ordering = '-id'
+#
+# class RotaVeiculoViewSet(viewsets.ModelViewSet):
+#     queryset = RotaVeiculo.objects.all()
+#     serializer_class = RotaVeiculoSerializer
+#     ordering_fields = '__all__'
+#     ordering = '-id'
