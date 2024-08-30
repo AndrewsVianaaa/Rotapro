@@ -129,9 +129,8 @@ class Fabrica(models.Model):
         max_length=15,
         verbose_name='Quantidade de Funcionários'
     )
-    data = models.CharField(
+    data = models.DateField(
         db_column='Data',
-        max_length=15,
         verbose_name='Data'
     )
     hora_inicio = models.CharField(
