@@ -19,6 +19,7 @@ class MotoristaAdmin(ModelAdminBase):
     search_fields = (
         'nome',
         'cpf',
+
     )
 
 # @admin.register(Veiculo)
